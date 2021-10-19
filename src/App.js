@@ -21,7 +21,6 @@ function App() {
       setList(conv);
       e.target[0].value = "";
     }
-    
   }
 
   function delElement(i){
@@ -32,14 +31,15 @@ function App() {
 
   function saveElement(e){
     e.preventDefault();
-
+   
     let temp = list;
     let index = e.target[1].value;
     let value = e.target[0].value;
     
-    temp.splice(index,1, value);
-
-    setList(temp);
+    if(value !== ""){
+      temp.splice(index,1, value);
+      setList(temp);
+    }
     setEdit(-1);
   }
 
@@ -48,8 +48,6 @@ function App() {
       <tr key={index}>
         <td>{index +1}</td>
         <td>{value}</td>
-        <td>Fecha</td>
-        <td>Hora</td>
         <td className="icons">
           <FontAwesomeIcon 
             onClick={()=> delElement(index)} 
@@ -84,8 +82,6 @@ function App() {
               </InputGroup>
             </form>
           </td>
-          <td>Fecha</td>
-          <td>Hora</td>
           <td className="icons">
             <FontAwesomeIcon 
               onClick={()=> delElement(index)} 
@@ -123,8 +119,6 @@ function App() {
             <tr>
               <th>#</th>
               <th>Descripcion</th>
-              <th>Fecha</th>
-              <th>Hora</th>
             </tr>
           </thead>
           <tbody>
